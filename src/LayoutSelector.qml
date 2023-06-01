@@ -5,8 +5,23 @@ Item
 {
     property var currentLayout
 
+    QtObject
+    {
+        id: internal
+
+        property bool hasCustomLayout: false
+    }
+
+    function setCustomLayout(layout)
+    {
+        internal.hasCustomLayout = true;
+        currentLayout = layout;
+        currentLayout.selectDefaultKeySet();
+    }
+
     Component.onCompleted:
     {
+        if(internal.hasCustomLayout) return;
         switchLayout(Qt.locale().name);
     }
 

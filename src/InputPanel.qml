@@ -25,6 +25,11 @@ Item
 
     signal enterPressed()
 
+    function setCustomLayout(layout)
+    {
+        layoutSelector.setCustomLayout(layout);
+    }
+
     function switchKeySetByImh(value)
     {
         layoutSelector.selectKeySetByImg(value);
