@@ -13,15 +13,16 @@ import FreeVirtualKeyboard 1.0
  */
 Item
 {
-    id:root
+    id: root
     objectName: "inputPanel"
-    width: parent.width
-    height: width / 4
+    // width: parent.width
+    // height: width / 4
     // Report actual keyboard rectangle to input engine
     onYChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
 
     property var model
     property color backgroundColor: "black"
+    property real buttonWidth: -1
 
     signal enterPressed()
 
@@ -53,12 +54,12 @@ Item
     }
     QtObject
     {
-        id:pimpl
+        id: pimpl
         property bool shiftModifier: false
         property int verticalSpacing: Math.round(keyboard.height / 40)
         property int horizontalSpacing: verticalSpacing - 3
         property int rowHeight: Math.round(keyboard.height/4 - verticalSpacing)
-        property int buttonWidth:  Math.round((keyboard.width-column.anchors.margins)/10 - horizontalSpacing) - 2
+        property int buttonWidth: root.buttonWidth == -1 ? Math.round((keyboard.width - column.anchors.margins) / 10 - horizontalSpacing) - 2 : root.buttonWidth
     }
 
     Connections
@@ -81,23 +82,28 @@ Item
     /**
      * The key popup for character preview
      */
-    KeyPopup {
+    KeyPopup
+    {
         id: keyPopup
         visible: false
         z: 100
     }
 
 
-    Rectangle {
-        id:keyboard
+    Rectangle
+    {
+        id: keyboard
         color: root.backgroundColor
         anchors.fill: parent;
-        MouseArea {
+
+        MouseArea
+        {
             anchors.fill: parent
         }
 
-        Column {
-            id:column
+        Column
+        {
+            id: column
             anchors.margins: 5
             anchors.fill: parent
             spacing: pimpl.verticalSpacing
