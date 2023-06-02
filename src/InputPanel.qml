@@ -24,6 +24,9 @@ Item
     property color backgroundColor: "black"
     property real buttonWidth: -1
 
+    property alias keypopupWidthFactor: keyPopup.widthFactor
+    property alias keypopupHeightFactor: keyPopup.widthFactor
+
     signal enterPressed()
 
     function setCustomLayout(layout)

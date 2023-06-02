@@ -12,17 +12,22 @@ Item {
     property alias text: txt.text
     property alias font: txt.font
 
+    property real widthFactor: 1.4
+    property real heightFactor: 1.4
+
     width: 40
     height: 40
     visible: false
 
-    Rectangle {
+    Rectangle
+    {
         id: popup
         anchors.fill: parent
         radius: Math.round(height / 30)
         z: shadow.z + 1
 
-        gradient: Gradient {
+        gradient: Gradient
+        {
                  GradientStop { position: 0.0; color: Qt.lighter(Qt.lighter("#35322f"))}
                  GradientStop { position: 1.0; color: Qt.lighter("#35322f")}
 
@@ -39,7 +44,8 @@ Item {
         }
     }
 
-    Rectangle {
+    Rectangle
+    {
         id: shadow
         width: popup.width
         height: popup.height
@@ -49,16 +55,14 @@ Item {
         y: 4
     }
 
-    function popup(keybutton, inputPanel) {
-//        console.log("popup: " + inputPanel.objectName);
-//        console.log("keybutton.text: " + keybutton.text);
-        width = keybutton.width * 1.4;
-        height = keybutton.height * 1.4;
+    function popup(keybutton, inputPanel)
+    {
+        width = keybutton.width * root.widthFactor;
+        height = keybutton.height * root.heightFactor;
         var KeyButtonGlobalLeft = keybutton.mapToItem(inputPanel, 0, 0).x;
         var KeyButtonGlobalTop = keybutton.mapToItem(inputPanel, 0, 0).y;
         var PopupGlobalLeft = KeyButtonGlobalLeft - (width - keybutton.width) / 2;
         var PopupGlobalTop = KeyButtonGlobalTop - height - pimpl.verticalSpacing * 1.5;
-//        console.log("Popup position left: " + KeyButtonGlobalLeft);
         var PopupLeft = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).x;
         y = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).y;
         if (PopupGlobalLeft < 0)
