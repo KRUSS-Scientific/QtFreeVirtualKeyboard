@@ -160,7 +160,7 @@ Item {
 
     onReleased: {
         state = ""
-        //console.log("onReleased - functionKey = " + functionKey)
+
         if (!functionKey)
         {
             InputEngine.sendKeyToFocusItem(text)

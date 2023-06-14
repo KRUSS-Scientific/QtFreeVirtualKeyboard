@@ -18,7 +18,10 @@ Item
     // width: parent.width
     // height: width / 4
     // Report actual keyboard rectangle to input engine
+    onXChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
     onYChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
+    onHeightChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
+    onWidthChanged: InputEngine.setKeyboardRectangle(Qt.rect(x, y, width, height))
 
     property var model
     property color backgroundColor: "black"

@@ -113,6 +113,23 @@ Loader
         }
     }
     Component
+        {
+        id: softEnterKeyComponent
+        KeyButton {
+            color: "#1e1b18"
+            width: Math.round(control.widthFactor > 0 ? control.widthFactor * pimpl.buttonWidth : 1.25*pimpl.buttonWidth)
+            height: pimpl.rowHeight
+            displayText: control.displayText != "" ? control.displayText : "Enter"
+            font: root.font
+            inputPanel: root
+
+            onPressed:
+                {
+                root.enterPressed();
+            }
+        }
+    }
+    Component
     {
         id: shiftKeyComponent
         KeyButton {
@@ -170,6 +187,8 @@ Loader
                 return modeSwitchKeyComponent;
             case "enterKey":
                 return enterKeyComponent;
+            case "softEnterKey":
+                return softEnterKeyComponent;
             case "shiftKey":
                 return shiftKeyComponent;
             case "backspaceKey":
