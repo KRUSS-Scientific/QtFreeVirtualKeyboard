@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.4
+import QtQuick
+import QtQuick.Layouts
 import "."
 import "layouts"
-import FreeVirtualKeyboard 1.0
+import FreeVirtualKeyboard
 
 /**
  * This is the QML input panel that provides the virtual keyboard UI

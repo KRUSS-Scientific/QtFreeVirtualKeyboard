@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick
 
 /**
  * This is quick and dirty model for the keys of the InputPanel *

@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick
 
 /**
  * This is the key popup that shows a character preview above the
